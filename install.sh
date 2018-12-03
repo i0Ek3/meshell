@@ -37,6 +37,7 @@ then
     fi
 else
     mkdir -p $HOME/temp
+    cd $HOME/temp
     git clone https://github.com/chxuan/vimplus.git && cd vimplus && ./install.sh
 fi
 
@@ -120,16 +121,17 @@ sudo add-apt-repository ppa:papirus/papirus && sudo apt-get update && sudo apt-g
 ##                  Bitstream Vera Sans Mono Nerd Roman/Cusine Nerd Font Reegular/FantasqueSansMono Nerd Font Regular/InconsolataLGC Nerd Font Medimu
 ##   #beauty font:  CodeNewRoman Nerd Font Book(arrow has a problem)/InconsolataLGC Nerd Font Italic/Knack Nerd Font Regular
 ##  Titlebar Font: Arimo Nerd Font Regular 12
-function nerd_font
-{
-    if [ -d $dir/nerd-fonts ]
-    then
-        cd $dir/nerd-fonts && sudo ./install.sh
-    else
-        git clone https://github.com/ryanoasis/nerd-fonts.git $dir
-        cd $dir/nerd-fonts && sudo ./install.sh
-    fi
-}
+##
+##function nerd_font
+##{
+##    if [ -d $dir/nerd-fonts ]
+##    then
+##        cd $dir/nerd-fonts && sudo ./install.sh
+##    else
+##        git clone https://github.com/ryanoasis/nerd-fonts.git $dir
+##        cd $dir/nerd-fonts && sudo ./install.sh
+##    fi
+##}
 
 ## Install Powerline Font
 function powerline_font 

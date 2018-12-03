@@ -5,7 +5,8 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # basic
-brew install git zsh tmux fish tree screenfetch 
+brew install git zsh tmux fish tree screenfetch m-cli mas emojify
+brew cask install mark-text
 
 # zsh & oh-my-zsh
 chsh -s /bin/zsh
@@ -20,6 +21,9 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 # brew cask install xxxx
 brew install gawk ack ag autojump automake cmake llvm proxychains-ng python3 go java wget gpg ant maven tomcat jetty hub mysql redis postgresql gradle mpg123 git-flow zsh-autosuggestions 
 brew postinstall python3
+
+# nix package magement
+curl https://nixos.org/nix/install | sh
 
 # fairfont
 brew tap caskroom/fonts
