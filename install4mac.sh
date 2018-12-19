@@ -6,7 +6,17 @@
 
 # basic
 brew install git zsh tmux fish tree screenfetch m-cli mas emojify
-brew cask install mark-text
+brew cask install mark-text aria2gui switchhosts
+
+
+# git setting
+ssh-keygen -t rsa -b 4096 -C "kno30826@gmail.com"
+eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
+git config --global user.email "kno30826@gmail.com"
+git config --global user.name "i0Ek3"
+
+ecgo "Please go to your github setting page to add SSH key which is under your /home/.ssh/id_rsb.pub"
+
 
 # zsh & oh-my-zsh
 chsh -s /bin/zsh
@@ -21,6 +31,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 # brew cask install xxxx
 brew install gawk ack ag autojump automake cmake llvm proxychains-ng python3 go java wget gpg ant maven tomcat jetty hub mysql redis postgresql gradle mpg123 git-flow zsh-autosuggestions 
 brew postinstall python3
+brew install the_silver_searcher mycli pgcli
 
 # nix package magement
 curl https://nixos.org/nix/install | sh
@@ -44,7 +55,7 @@ curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.
 brew cask install android-platform-tools mark-text
 
 # pip
-sudo easy_install pip ; pip install virtualenv django
+sudo easy_install pip ; pip install virtualenv django pipupgrade
 sudo pip3 install asciinema NetEase-Music rebound-cli
 
 # wudao-dict
@@ -53,13 +64,12 @@ sudo pip3 install asciinema NetEase-Music rebound-cli
 # vimplus
 # git clone  https://github.com/chxuan/vimplus.git ~/.vimplus && cd ~/.vimplus && ./install.sh
 
-# git setting
-ssh-keygen -t rsa -b 4096 -C "kno30826@gmail.com"
-eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
-git config --global user.email "kno30826@gmail.com"
-git config --global user.name "i0Ek3"
+# for Security
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
+  chmod 755 msfinstall && \
+  ./msfinstall
 
-ecgo "Please go to your github setting page to add SSH key which is under your /home/.ssh/id_rsb.pub"
+
 
 
 echo "All done!"
