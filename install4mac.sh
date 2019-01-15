@@ -32,6 +32,8 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 brew install gawk ack ag autojump automake cmake llvm proxychains-ng python3 go java wget gpg ant maven tomcat jetty hub mysql redis postgresql gradle mpg123 git-flow zsh-autosuggestions 
 brew postinstall python3
 brew install the_silver_searcher mycli pgcli
+brew tap xo/xo ; brew install usql 
+
 
 # nix package magement
 curl https://nixos.org/nix/install | sh

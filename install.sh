@@ -46,6 +46,9 @@ fi
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
 
+## npm 
+ npm i -g carbon-now-cli 
+
 
 ## mini Game
 ## 俄罗斯方块 打蜜蜂
