@@ -33,6 +33,10 @@ brew install gawk ack ag autojump automake cmake llvm proxychains-ng python3 go 
 brew postinstall python3
 brew install the_silver_searcher mycli pgcli
 brew tap xo/xo ; brew install usql 
+brew install nektos/tap/act # https://github.com/nektos/act
+brew install joplin # editor
+brew install mps-youtube # https://github.com/mps-youtube/mps-youtube
+
 
 
 # nix package magement
