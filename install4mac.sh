@@ -1,34 +1,33 @@
 #!/bin/bash
 
-
 # homebrew & homebrew cask
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # basic
-brew install git zsh tmux fish tree screenfetch m-cli mas emojify
+brew install git zsh tmux fish tree screenfetch mas emojify
+brew install tig git-extras # for github
 brew cask install mark-text aria2gui switchhosts
 
+# m-cli https://github.com/rgcr/m-cli
+# brew install m-cli
+curl -fsSL https://raw.githubusercontent.com/rgcr/m-cli/master/install.sh | sh
 
-# git setting
-ssh-keygen -t rsa -b 4096 -C "kno30826@gmail.com"
-eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
-git config --global user.email "kno30826@gmail.com"
-git config --global user.name "i0Ek3"
-
-ecgo "Please go to your github setting page to add SSH key which is under your /home/.ssh/id_rsb.pub"
-
+# Mac Cli
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/guarinogabriel/mac-cli/master/mac-cli/tools/install)"
 
 # zsh & oh-my-zsh
 chsh -s /bin/zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
+# vim
+curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+
 # node && nvm
 brew install node 
 curl -L https://www.npmjs.com/install.sh | sh
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34/install.sh | bash
 
-# common sf install
-# brew cask install xxxx
+# common software
 brew install gawk ack ag autojump automake cmake llvm proxychains-ng python3 go java wget gpg ant maven tomcat jetty hub mysql redis postgresql gradle mpg123 git-flow zsh-autosuggestions 
 brew postinstall python3
 brew install the_silver_searcher mycli pgcli
@@ -37,7 +36,9 @@ brew install nektos/tap/act # https://github.com/nektos/act
 brew install joplin # editor
 brew install mps-youtube # https://github.com/mps-youtube/mps-youtube
 
-
+# cli app
+brew tap timothyye/tap
+brew install timothyye/tap/ydict timothyye/tap/exchangerate
 
 # nix package magement
 curl https://nixos.org/nix/install | sh
@@ -58,24 +59,14 @@ curl https://sh.rustup.rs -sSf | sh
 curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.sh | sh
 
 # adb tools
-brew cask install android-platform-tools mark-text
+brew cask install android-platform-tools
 
 # pip
 sudo easy_install pip ; pip install virtualenv django pipupgrade
 sudo pip3 install asciinema NetEase-Music rebound-cli
 
-# wudao-dict
-# cd ./wudao-dict/wudao-dict ; sudo ./setup.sh
-
-# vimplus
-# git clone  https://github.com/chxuan/vimplus.git ~/.vimplus && cd ~/.vimplus && ./install.sh
-
-# for Security
-curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
-  chmod 755 msfinstall && \
-  ./msfinstall
-
-
+# npm software
+npm install -g leetcode-cli carbon-now-cli
 
 
 echo "All done!"

@@ -9,7 +9,7 @@
 # ref : https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-16-04
 # passwd:M@062&w
 sudo apt update
-sudo apt install mysql-server # install 
+sudo apt install -y mysql-server # install 
 mysql_secure_installation # config
 systemctl status mysql.service # boot service
 mysqladmin -p -u root version # cat version
