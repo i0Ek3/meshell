@@ -4,7 +4,7 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # basic
-brew install git zsh tmux fish tree screenfetch mas emojify
+brew install git git-lfs zsh tmux fish tree screenfetch mas emojify bat
 brew install tig git-extras # for github
 brew cask install mark-text aria2gui switchhosts
 
@@ -66,8 +66,8 @@ sudo easy_install pip ; pip install virtualenv django pipupgrade
 sudo pip3 install asciinema NetEase-Music rebound-cli
 
 # npm software
-npm install -g leetcode-cli carbon-now-cli
-
+npm install -g leetcode-cli carbon-now-cli gitmoji-cli fast-cli splash-cli
+yarn add docz docz-theme-default --dev
 
 echo "All done!"
 
