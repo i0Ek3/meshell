@@ -10,7 +10,7 @@ sudo apt-get install build-essential file clang g++ libdbus-1-dev libgtk2.0-dev 
                      libxss1 libnss3-dev gcc-multilib g++-multilib curl ack gwk \
                      gperf bison libncurses5-dev automake android-tools-adb \
                      android-tools-fastboot python3-pip uget vlc geany aria2 \
-                     screenfetch fish tmux screen gedit redshift lynx inxi transmission-gtk \
+                     screenfetch tmux screen gedit redshift lynx inxi transmission-gtk \
                      rar unrar aptitude && sudo aptitude install autotools-dev \
                      libgtk2.0-dev libscim-dev libtool cmake proxychains snapd \
                      opencc mercurial fcitx fcitx-config-gtk fcitx-googlepinyin \
@@ -18,6 +18,9 @@ sudo apt-get install build-essential file clang g++ libdbus-1-dev libgtk2.0-dev 
 ## Linuxbrew
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
+## fish
+sudo apt install fish
+curl -L https://get.oh-my.fish | fish
 
 ## Git + ZSH
 ## http://blog.csdn.net/gatieme/article/details/52741221

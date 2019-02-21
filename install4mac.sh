@@ -4,9 +4,13 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # basic
-brew install git git-lfs zsh tmux fish tree screenfetch mas emojify bat
+brew install git git-lfs zsh tmux tree screenfetch mas emojify bat
 brew install tig git-extras # for github
 brew cask install mark-text aria2gui switchhosts
+
+# oh-my-fish
+brew install fish
+curl -L https://get.oh-my.fish | fish
 
 # m-cli https://github.com/rgcr/m-cli
 # brew install m-cli
@@ -18,6 +22,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/guarinogabriel/mac-cli/mas
 # zsh & oh-my-zsh
 chsh -s /bin/zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+# gitea
+brew tap go-gitea/gitea
+brew install gitea
 
 # vim
 curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
@@ -35,6 +43,14 @@ brew tap xo/xo ; brew install usql
 brew install nektos/tap/act # https://github.com/nektos/act
 brew install joplin # editor
 brew install mps-youtube # https://github.com/mps-youtube/mps-youtube
+brew install smallstep/smallstep/step
+brew cask install osxfuse
+brew install sshfs watch
+brew cask install ndm
+brew tap eddieantonio/eddieantonio ; brew install imgcat
+
+## for ai faceswap
+brew install lapack openblas opencv dlib --with-openblas
 
 # cli app
 brew tap timothyye/tap
