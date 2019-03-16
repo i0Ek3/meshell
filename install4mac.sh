@@ -4,7 +4,7 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # basic
-brew install git git-lfs zsh tmux tree screenfetch mas emojify bat
+brew install vim neovim git git-lfs zsh tmux tree screenfetch mas emojify bat
 brew install tig git-extras # for github
 brew cask install mark-text aria2gui switchhosts
 
@@ -36,7 +36,7 @@ curl -L https://www.npmjs.com/install.sh | sh
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34/install.sh | bash
 
 # common software
-brew install gawk ack ag autojump automake cmake llvm proxychains-ng python3 go java wget gpg ant maven tomcat jetty hub mysql redis postgresql gradle mpg123 git-flow zsh-autosuggestions 
+brew install telnet gawk ack ag autojump automake cmake llvm proxychains-ng python3 go java wget gpg ant maven tomcat jetty hub mysql redis postgresql gradle mpg123 git-flow zsh-autosuggestions 
 brew postinstall python3
 brew install the_silver_searcher mycli pgcli
 brew tap xo/xo ; brew install usql 
@@ -82,7 +82,7 @@ sudo easy_install pip ; pip install virtualenv django pipupgrade
 sudo pip3 install asciinema NetEase-Music rebound-cli
 
 # npm software
-npm install -g leetcode-cli carbon-now-cli gitmoji-cli fast-cli splash-cli
+npm install -g leetcode-cli carbon-now-cli gitmoji-cli fast-cli splash-cli yddict hackmyresume tldr
 yarn add docz docz-theme-default --dev
 
 echo "All done!"

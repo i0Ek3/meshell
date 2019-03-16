@@ -4,7 +4,7 @@
 sudo apt update && sudo apt upgrade
 
 ## based install
-sudo apt-get install build-essential file clang g++ libdbus-1-dev libgtk2.0-dev \
+sudo apt-get install vim neovim build-essential file clang g++ libdbus-1-dev libgtk2.0-dev \
                      libnotify-dev libgnome-keyring-dev libgconf2-dev \
                      libasound2-dev libcap-dev libcups2-dev libxtst-dev \
                      libxss1 libnss3-dev gcc-multilib g++-multilib curl ack gwk \
@@ -28,7 +28,7 @@ sudo add-apt-repository ppa:git-core/ppa && sudo apt update && sudo apt install 
 sudo apt install zsh && chsh -s /bin/zsh && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 ## npm
-npm i -g carbon-now-cli leetcode-cli
+npm i -g carbon-now-cli leetcode-cli yddict hackmyresume tldr
 
 ## icon theme
 sudo add-apt-repository ppa:papirus/papirus && sudo apt-get update && sudo apt-get install papirus-icon-theme
