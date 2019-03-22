@@ -47,7 +47,10 @@ brew install smallstep/smallstep/step
 brew cask install osxfuse
 brew install sshfs watch
 brew cask install ndm
-brew tap eddieantonio/eddieantonio ; brew install imgcat
+brew tap eddieantonio/eddieantonio
+brew install exa fd bat fzf nnn asciinema httpie sshrc rust goaccess ncdu
+brew install zsh-autosuggestions 
+
 
 ## for ai faceswap
 brew install lapack openblas opencv dlib --with-openblas
@@ -79,11 +82,12 @@ brew cask install android-platform-tools
 
 # pip
 sudo easy_install pip ; pip install virtualenv django pipupgrade
-sudo pip3 install asciinema NetEase-Music rebound-cli
+sudo pip3 install asciinema NetEase-Music rebound-cli ranger-fm
 
 # npm software
 npm install -g leetcode-cli carbon-now-cli gitmoji-cli fast-cli splash-cli yddict hackmyresume tldr
 yarn add docz docz-theme-default --dev
+npm install -g svg-term-cli
 
 echo "All done!"
 
