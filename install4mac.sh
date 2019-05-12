@@ -53,6 +53,13 @@ brew tap timothyye/tap ; brew install timothyye/tap/ydict timothyye/tap/exchange
 brew install reattach-to-user-namespace
 brew install snaipe/soft/criterion # test frame
 brew install luarocks
+brew install elixir erlang
+brew tap dart-lang/dart ; brew install dart
+brew install clojure
+brew install sbcl # for lisp
+brew install sbt@1 # for scala
+export TOOLCHAINS=swift # for swift
+
 
 # kotlin
 # curl -s https://get.sdkman.io | bash ; sdk install kotlin
