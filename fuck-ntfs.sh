@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 # This script will make you mac access the ntfs type external disk directly
 
 # Usage info
