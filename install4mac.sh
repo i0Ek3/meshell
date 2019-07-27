@@ -23,11 +23,11 @@ chsh -s /bin/zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 # gitea
-brew tap go-gitea/gitea
-brew install gitea
+#brew tap go-gitea/gitea
+#brew install gitea
 
 # vim
-curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+#curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 
 # node && nvm
 brew install node 
@@ -38,7 +38,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | b
 brew install telnet gawk ack ag autojump automake cmake llvm proxychains-ng python3 go java wget gpg mysql redis postgresql mpg123 git-flow zsh-autosuggestions 
 brew postinstall python3
 brew install the_silver_searcher mycli pgcli
-brew tap xo/xo ; brew install usql 
+#brew tap xo/xo ; brew install usql 
 brew install nektos/tap/act # https://github.com/nektos/act
 brew install mps-youtube # https://github.com/mps-youtube/mps-youtube
 brew install smallstep/smallstep/step
@@ -58,12 +58,14 @@ brew tap dart-lang/dart ; brew install dart
 brew install clojure
 brew install sbcl # for lisp
 brew install sbt@1 # for scala
-export TOOLCHAINS=swift # for swift
-
-
-# kotlin
-# curl -s https://get.sdkman.io | bash ; sdk install kotlin
 brew install kotlin
+export TOOLCHAINS=swift # for swift
+brew install qemu
+brew cask install vscodium
+
+
+# gvm
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 
 # nix package magement
 curl https://nixos.org/nix/install | sh
