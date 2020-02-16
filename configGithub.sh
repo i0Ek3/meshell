@@ -11,4 +11,4 @@ git config --global user.email "$email"
 git config --global user.name "$username"
 
 
-ecgo "Please go to your github setting page to add SSH key which is under your /home/.ssh/id_rsb.pub"
+echo "Please go to your github setting page to add SSH key which is under your /home/.ssh/id_rsb.pub"

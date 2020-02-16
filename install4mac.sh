@@ -1,67 +1,40 @@
 #!/bin/bash
 
 # homebrew & homebrew cask
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://hellogithub.cn-bj.ufileos.com/file/brew_install.sh)"
 
 # basic
-brew install vim neovim git git-lfs zsh tmux tree screenfetch mas emojify
-brew install tig git-extras # for github
+brew install vim neovim git git-lfs tmux tree screenfetch mas emojify tig git-extras
 
 # oh-my-fish
 brew install fish
-curl -L https://get.oh-my.fish | fish
+#curl -L https://get.oh-my.fish | fish
 
 # m-cli https://github.com/rgcr/m-cli
-# brew install m-cli
-curl -fsSL https://raw.githubusercontent.com/rgcr/m-cli/master/install.sh | sh
+brew install m-cli
+#curl -fsSL https://raw.githubusercontent.com/rgcr/m-cli/master/install.sh | sh
 
 # Mac Cli
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/guarinogabriel/mac-cli/master/mac-cli/tools/install)"
 
 # zsh & oh-my-zsh
+brew install zsh
 chsh -s /bin/zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
-# gitea
-#brew tap go-gitea/gitea
-#brew install gitea
-
-# vim
-#curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
-
 # node && nvm
-brew install node 
+brew install node
 curl -L https://www.npmjs.com/install.sh | sh
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
 # common software
-brew install telnet gawk ack ag autojump automake cmake llvm proxychains-ng python3 go java wget gpg mysql redis postgresql mpg123 git-flow zsh-autosuggestions 
-brew postinstall python3
-brew install the_silver_searcher mycli pgcli
-#brew tap xo/xo ; brew install usql 
-brew install nektos/tap/act # https://github.com/nektos/act
-brew install mps-youtube # https://github.com/mps-youtube/mps-youtube
-brew install smallstep/smallstep/step
-brew cask install osxfuse
-brew install sshfs watch
-brew cask install ndm
-brew tap eddieantonio/eddieantonio
-brew install exa fd bat fzf nnn asciinema httpie sshrc rust goaccess ncdu
-brew install shellcheck hexyl hh ripgrep
-brew cask install android-platform-tools
-brew tap timothyye/tap ; brew install timothyye/tap/ydict timothyye/tap/exchangerate
-brew install reattach-to-user-namespace
-brew install snaipe/soft/criterion # test frame
-brew install luarocks
-brew install elixir erlang
-brew tap dart-lang/dart ; brew install dart
-brew install clojure
-brew install sbcl # for lisp
-brew install sbt@1 # for scala
-brew install kotlin
+brew cask install java mpv osxfuse ndm android-platform-tools vscodium
+brew install telnet gawk ack ag autojump automake cmake llvm proxychains-ng wget gpg mysql redis postgresql mpg123 git-flow zsh-autosuggestions the_silver_searcher mycli pgcli mps-youtube sshfs watch exa fd bat fzf nnn asciinema httpie sshrc qemu
+brew tap eddieantonio/eddieantonio ; brew install shellcheck hexyl hh ripgrep
+brew tap timothyye/tap ; brew install timothyye/tap/ydict timothyye/tap/exchangerate reattach-to-user-namespace snaipe/soft/criterion
+brew tap dart-lang/dart ; brew install dart python3 go clojure sbcl sbt@1 kotlin luarocks elixir erlang rust
 export TOOLCHAINS=swift # for swift
-brew install qemu
-brew cask install vscodium
 
 
 # gvm
