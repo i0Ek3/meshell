@@ -43,7 +43,7 @@ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/bins
 # nix package magement
 curl https://nixos.org/nix/install | sh
 
-# fairfont
+# fira font
 brew tap caskroom/fonts
 brew cask install font-fira-code
 
