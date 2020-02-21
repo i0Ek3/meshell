@@ -36,6 +36,10 @@ brew tap timothyye/tap ; brew install timothyye/tap/ydict timothyye/tap/exchange
 brew tap dart-lang/dart ; brew install dart python3 go clojure sbcl sbt@1 kotlin luarocks elixir erlang rust
 export TOOLCHAINS=swift # for swift
 
+# fuckGFW
+brew tap trojan-gfw/homebrew-trojan
+brew install trojan
+
 
 # gvm
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
