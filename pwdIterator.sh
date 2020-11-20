@@ -1,20 +1,12 @@
 #!/bin/bash
-## 
-## pwdIterator.sh
-## @i0Ek3(kno30826@gmail.com)
-## 2018-08-25 23:01:57
-##
 
 # Next update: parameterlize program and enhance encrypt level
 #
 # Usage: ./pwdIterator.sh [encrypt type] [contents] [times]
-#   with 2 parameters: 
-#       ./pwdIterator.sh md5 iso2img.sh 
-#   or 3: 
+#   with 2 parameters:
+#       ./pwdIterator.sh md5 iso2img.sh
+#   or 3:
 #       ./pwdIterator.sh md5 "abcdf" 5
-
-
-#!/bin/bash
 
 echo -n "Which way you want to encrypt(md5 sha1 sha256 sha512): "
 read encrypt
@@ -29,10 +21,10 @@ echo -e "\033[34m Okay, thank you for your patient! \033[0m"
 # macOS
 # sha support 1 (default), 224, 256, 384, 512, 512224, 512256
 
-function calculateHash() 
+function calculateHash()
 {
     if [ $type == "file" ]
-    then 
+    then
         if [ $encrypt == "md5" ]
         then
             echo $(md5 $contents)
@@ -70,12 +62,10 @@ function calculateHash()
     fi
 }
 
-calculateHash 
+calculateHash
 
 #for (( times = 1; times <= $time; times++ ))
 #do
 #    ret = $(echo -n $1 | md5 | awk '{print $1}')
 #    echo -n $ret | md5 | awk '{print $ret}'
 #done
-
-

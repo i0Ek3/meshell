@@ -24,7 +24,7 @@ curl -L https://get.oh-my.fish | fish
 
 ## Git + ZSH
 ## http://blog.csdn.net/gatieme/article/details/52741221
-sudo add-apt-repository ppa:git-core/ppa && sudo apt update && sudo apt install git 
+sudo add-apt-repository ppa:git-core/ppa && sudo apt update && sudo apt install git
 sudo apt install zsh && chsh -s /bin/zsh && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 ## npm
@@ -44,13 +44,13 @@ sudo add-apt-repository ppa:webupd8team/java && sudo apt update && sudo apt inst
 ##      sudo mv xxxxxx/ /opt/xxxxxx
 ##      sudo ln -s /opt/xxxxxx/bin/xxxxxx.sh /usr/local/bin/xxxxxx
 ## boot: xxxxxx
-## uninstallation: sudo rm /opt/xxxxxx/ -R    
+## uninstallation: sudo rm /opt/xxxxxx/ -R
 
 ## Wd-dict
-sudo pip3 install bs4 lxml && cd /media/ianpasm/ianpasmer/g1thu6/third/wudao-dict/wudao-dict/ && sudo bash setup.sh 
+sudo pip3 install bs4 lxml && cd /media/ianpasm/ianpasmer/g1thu6/third/wudao-dict/wudao-dict/ && sudo bash setup.sh
 
 ## Musicbox
-sudo pip3 install NetEase-MusicBox && sudo apt install mpg123 
+sudo pip3 install NetEase-MusicBox && sudo apt install mpg123
 
 ## Sublime-text
 #wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - && sudo apt-get install apt-transport-https
@@ -59,6 +59,5 @@ sudo pip3 install NetEase-MusicBox && sudo apt install mpg123
 # dev
 #echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 #sudo apt update && sudo apt install sublime-text
-
 
 sudo apt update && sudo apt upgrade

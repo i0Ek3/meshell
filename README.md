@@ -1,6 +1,5 @@
 # Scripts
 
-Here are some foolish scripts for personal use, not all of these scripts have fully tested, be careful! You own RISK!!!
+Here are some foolish scripts for personal use, these scripts are not fully tested,  so be careful! 
 
-
-
+> YOU OWN RISK!!!

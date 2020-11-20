@@ -28,6 +28,9 @@ brew install node
 curl -L https://www.npmjs.com/install.sh | sh
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
+# cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
 # common software
 brew cask install java mpv osxfuse ndm android-platform-tools vscodium
 brew install telnet gawk ack ag autojump automake cmake llvm proxychains-ng wget gpg mysql redis postgresql mpg123 git-flow zsh-autosuggestions the_silver_searcher mycli pgcli mps-youtube sshfs watch exa fd bat fzf nnn asciinema httpie sshrc qemu
@@ -74,5 +77,3 @@ yarn add docz docz-theme-default --dev
 npm install -g svg-term-cli
 
 echo "All done!"
-
-
