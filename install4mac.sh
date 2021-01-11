@@ -32,7 +32,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | b
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 # common software
-brew cask install java mpv osxfuse ndm android-platform-tools vscodium
+brew install --cask androidtool java mpv osxfuse ndm android-platform-tools vscodium
 brew install telnet gawk ack ag autojump automake cmake llvm proxychains-ng wget gpg mysql redis postgresql mpg123 git-flow zsh-autosuggestions the_silver_searcher mycli pgcli mps-youtube sshfs watch exa fd bat fzf nnn asciinema httpie sshrc qemu
 brew tap eddieantonio/eddieantonio ; brew install shellcheck hexyl hh ripgrep
 brew tap timothyye/tap ; brew install timothyye/tap/ydict timothyye/tap/exchangerate reattach-to-user-namespace snaipe/soft/criterion
@@ -52,7 +52,7 @@ curl https://nixos.org/nix/install | sh
 
 # fira font
 brew tap caskroom/fonts
-brew cask install font-fira-code
+brew install --cask font-fira-code
 
 # ruby env rvm
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB ; \curl -sSL https://get.rvm.io | bash -s stable
@@ -68,7 +68,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.sh | sh
 
 # pip
+version=20.3.3
 sudo easy_install pip ; pip install virtualenv django pipupgrade
+sudo pip install pip==$version
 sudo pip3 install NetEase-Music rebound-cli ranger-fm
 
 # npm software
