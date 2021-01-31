@@ -33,6 +33,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 # common software
 brew install --cask androidtool java mpv osxfuse ndm android-platform-tools vscodium
+brew install --HEAD libimobiledevice; brew install ideviceinstaller # for ios device
 brew install telnet gawk ack ag autojump automake cmake llvm proxychains-ng wget gpg mysql redis postgresql mpg123 git-flow zsh-autosuggestions the_silver_searcher mycli pgcli mps-youtube sshfs watch exa fd bat fzf nnn asciinema httpie sshrc qemu
 brew tap eddieantonio/eddieantonio ; brew install shellcheck hexyl hh ripgrep
 brew tap timothyye/tap ; brew install timothyye/tap/ydict timothyye/tap/exchangerate reattach-to-user-namespace snaipe/soft/criterion
@@ -72,6 +73,7 @@ version=20.3.3
 sudo easy_install pip ; pip install virtualenv django pipupgrade
 sudo pip install pip==$version
 sudo pip3 install NetEase-Music rebound-cli ranger-fm
+pi3 jupyterlab notebook voila
 
 # npm software
 npm install -g leetcode-cli carbon-now-cli gitmoji-cli fast-cli splash-cli yddict tldr
