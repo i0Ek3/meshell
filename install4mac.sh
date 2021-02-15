@@ -26,7 +26,6 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 # node && nvm
 brew install node
 curl -L https://www.npmjs.com/install.sh | sh
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
 # cnpm
 npm install -g cnpm --registry=https://registry.npm.taobao.org
@@ -43,7 +42,6 @@ export TOOLCHAINS=swift # for swift
 # fuckGFW
 brew tap trojan-gfw/homebrew-trojan
 brew install trojan
-
 
 # gvm
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
@@ -70,8 +68,8 @@ curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.
 
 # pip
 version=20.3.3
-sudo easy_install pip ; pip install virtualenv django pipupgrade
-sudo pip install pip==$version
+sudo easy_install pip ; pip3 install Pillow virtualenv django pipupgrade loguru
+sudo pip3 install pip==$version
 sudo pip3 install NetEase-Music rebound-cli ranger-fm
 pi3 jupyterlab notebook voila
 
