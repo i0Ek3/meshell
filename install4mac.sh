@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # homebrew & homebrew cask
-#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-/usr/bin/ruby -e "$(curl -fsSL https://hellogithub.cn-bj.ufileos.com/file/brew_install.sh)"
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 
 # basic
 brew install vim neovim git git-lfs tmux tree screenfetch mas emojify tig git-extras
