@@ -4,9 +4,13 @@ Here are some scripts for personal use, these scripts are not fully tested, so b
 
 > YOU OWN RISK!!!
 
+## Recommend
+
+Use setup_mac.sh to setup your mac.
+
 ## Content
-```
-Shell
+
+```Shell
 .
 ├── README.md
 ├── apk.sh
@@ -18,13 +22,17 @@ Shell
 ├── github_config.sh
 ├── goproxy.sh
 ├── install.sh
-├── install4mac.sh
-├── install_hb.sh
 ├── install_omz.sh
-├── install_pgsql.sh
 ├── java_cfg.sh
 ├── mysql_inst.sh
 ├── password_generator.sh
 ├── reinstall_pip.sh
+├── setup_mac.sh
 └── ssh_config.sh
+
+0 directories, 17 files
 ```
+
+## Credit
+
+You all guys.

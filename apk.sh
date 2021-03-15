@@ -1,9 +1,27 @@
 #! /bin/bash
 
-## Application for Alpine Linux
-apk update ; apk upgrade
-apk add git vim zsh tmux fish npm sudo g++ clang++ curl openssh python2 python3
+function apk_install()
+{
+	apk update ; apk upgrade
+	apk add git vim zsh tmux fish npm sudo g++ clang++ curl openssh python3
+}
 
-curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+function vim_install()
+{
+	git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+	sh ~/.vim_runtime/install_awesome_vimrc.sh
+}
 
-npm install yddict -g
+function npm_install()
+{
+	npm install yddict -g
+}
+
+function main()
+{
+	apk_install
+	vim_install
+	npm_install
+}
+
+main
