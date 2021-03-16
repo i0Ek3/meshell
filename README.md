@@ -1,4 +1,4 @@
-# Scripts
+# meshell 
 
 Here are some scripts for personal use, these scripts are not fully tested, so be careful! 
 
