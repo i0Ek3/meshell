@@ -3,7 +3,8 @@
 function apk_install()
 {
 	apk update ; apk upgrade
-	apk add git vim zsh tmux fish npm sudo g++ clang++ curl openssh python3
+    pkg=("git" "vim" "zsh" "tmux" "fish" "npm" "sudo" "g++" "clang++" "curl" "openssh" "python3")
+	apk add ${pkg[*]}
 }
 
 function vim_install()
@@ -14,7 +15,8 @@ function vim_install()
 
 function npm_install()
 {
-	npm install yddict -g
+    pkg=("yddict")
+	npm install -g ${pkg[*]}
 }
 
 function main()

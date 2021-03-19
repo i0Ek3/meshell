@@ -86,8 +86,42 @@ function bootborad_hack()
 	killall Dock
 }
 
+function set_proxy()
+{
+    # socks5/http/https proxy
+    echo -n "What's your proxy port?"
+    read -r port
+    if [ -s $port ]
+    then
+        export https_proxy=http://127.0.0.1:$port http_proxy=http://127.0.0.1:$port all_proxy=socks5://127.0.0.1:$port
+    else
+        export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+    fi
+
+    # goproxy
+    go env -w GO111MODULE=on
+	go env -w GOPROXY=https://goproxy.io,direct
+	export GOPROXY=https://goproxy.cn
+}
+
+function config_github()
+{
+	ssh-keygen -t rsa -b 4096 -C "$email"
+	eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
+	git config --global user.email "$email"
+	git config --global user.name "$username"
+	
+    echo "Please copy follows SSH key and then paste it into your github SSH setting pages."
+	cat ~/.ssh/id_rsb.pub
+}
+
 function main()
 {
+	echo "Enter your Github email: "
+	read -r email
+	echo "Enter your Github username: "
+	read -r username
+
 	install_homebrew
 	bootborad_hack
 	kill_dock
@@ -97,6 +131,8 @@ function main()
 	set_pgsql
 	pip_install
 	npm_install
+    set_proxy
+    config_github
 }
 
 main
