@@ -3,8 +3,8 @@
 function install_homebrew()
 {
 	/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
-	echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles' >> ~/.zshrc
-	source ~/.zshrc
+	#echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles' >> ~/.zshrc
+	#source ~/.zshrc
 	brew update ; brew upgrade
 	#sudo chown -R $(whoami) /usr/local/share/man/man8
 	#chmod u+w /usr/local/share/man/man9
@@ -23,18 +23,25 @@ function install_pkg()
 	pkg_cask=("android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool") 
 	
 	brew install --HEAD libimobiledevice
-        brew install ${pkg[*]}
+    brew install ${pkg[*]}
 	brew install --cask ${pkg_cask[*]}
 
 	curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.sh | sh
 
-    	echo 'scoks5 127.0.0.1 1086' >> /usr/local/etc/proxychains.conf
+    echo 'scoks5 127.0.0.1 1086' >> /usr/local/etc/proxychains.conf
+    echo "If your proxy port is not 1086, please modified it manaully, config file locate at /usr/local/etc/proxychains.conf."
 }
 
 function pip_install()
 {
 	pkg=("Pillow" "virtualenv" "NetEase-Music" "jupyterlab" "notebook")
-	pip3 install ${pkg[*]}
+    if [ -e /usr/bin/pip3 ]
+    then
+	    pip3 install ${pkg[*]}
+    else
+        sudo easy_install pip3
+	    pip3 install ${pkg[*]}
+    fi
 }
 
 function npm_install()
