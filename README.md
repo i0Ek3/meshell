@@ -19,8 +19,6 @@ Use setup_mac.sh to setup your mac.
 ├── fuck_github.sh
 ├── fuck_ntfs.sh
 ├── get_pip.py
-├── github_config.sh
-├── goproxy.sh
 ├── install.sh
 ├── install_omz.sh
 ├── java_cfg.sh
@@ -30,7 +28,7 @@ Use setup_mac.sh to setup your mac.
 ├── setup_mac.sh
 └── ssh_config.sh
 
-0 directories, 17 files
+0 directories, 15 files
 ```
 
 ## Credit

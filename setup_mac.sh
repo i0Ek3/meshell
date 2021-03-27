@@ -109,6 +109,11 @@ function set_proxy()
     go env -w GO111MODULE=on
 	go env -w GOPROXY=https://goproxy.io,direct
 	export GOPROXY=https://goproxy.cn
+
+    # github 
+    # Add follows lines into your hosts.
+    # 199.232.69.194 github.global.ssl.fastly.net
+    # 140.82.114.4 github.com
 }
 
 function config_github()
