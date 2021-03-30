@@ -13,24 +13,18 @@ Use setup_mac.sh to setup your mac.
 ```Shell
 .
 ├── README.md
-├── apk.sh
-├── brew_install.rb
-├── flash_ubuntu_touch.sh
+├── config_java_env.sh
+├── config_ssh.sh
 ├── fuck_github.sh
 ├── fuck_ntfs.sh
-├── get_pip.py
-├── install.sh
+├── install_from_apk.sh
+├── install_mysql4linux.sh
 ├── install_omz.sh
-├── java_cfg.sh
-├── mysql_inst.sh
+├── install_ubuntutouch.sh
 ├── password_generator.sh
 ├── reinstall_pip.sh
-├── setup_mac.sh
-└── ssh_config.sh
+└── setup_mac.sh
 
-0 directories, 15 files
+0 directories, 12 files
 ```
-
-## Credit
-
 You all guys.
