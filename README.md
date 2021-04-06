@@ -6,7 +6,7 @@ Here are some scripts for personal use, these scripts are not fully tested, so b
 
 ## Recommend
 
-Use setup_mac.sh to setup your mac.
+Use setup_mac.sh to setup your mac, you just need to run command: `sh setup.sh` or `./setup.sh`.
 
 ## Content
 
@@ -23,8 +23,9 @@ Use setup_mac.sh to setup your mac.
 ├── install_ubuntutouch.sh
 ├── password_generator.sh
 ├── reinstall_pip.sh
+├── rm_py2.sh
 └── setup_mac.sh
 
-0 directories, 12 files
+0 directories, 13 files
 ```
 You all guys.

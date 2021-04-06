@@ -3,11 +3,9 @@
 function install_homebrew()
 {
 	/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
-	#echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles' >> ~/.zshrc
-	#source ~/.zshrc
+	echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles' >> ~/.zshrc
+	source ~/.zshrc
 	brew update ; brew upgrade
-	#sudo chown -R $(whoami) /usr/local/share/man/man8
-	#chmod u+w /usr/local/share/man/man9
 }
 
 function install_ohmyzsh()
@@ -26,6 +24,7 @@ function install_pkg()
     brew install ${pkg[*]}
 	brew install --cask ${pkg_cask[*]}
 
+    # finderGo: open your terminal under the current path
 	curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.sh | sh
 
     echo 'scoks5 127.0.0.1 1086' >> /usr/local/etc/proxychains.conf
@@ -47,6 +46,7 @@ function pip_install()
 function npm_install()
 {
 	pkg=("carbon-now-cli" "gitmoji-cli" "yddict" "tldr")
+    npm config set registry https://registry.npm.taobao.org
 	npm install -g ${pkg[*]}
 }
 
@@ -79,8 +79,10 @@ function change_name()
 function kill_dock()
 {
 	defaults write com.apple.dock autohide-time-modifier -float 0.5 && killall Dock
-	#defaults delete com.apple.dock autohide-time-modifier && killall Dock
 	defaults write com.apple.dock autohide-delay -int 0 && killall Dock
+	
+    # restore
+    #defaults delete com.apple.dock autohide-time-modifier && killall Dock
 	#defaults delete com.apple.Dock autohide-delay && killall Dock
 }
 
@@ -88,9 +90,12 @@ function bootborad_hack()
 {
 	defaults write com.apple.dock springboard-columns -int 9
 	defaults write com.apple.dock springboard-rows -int 6
+
+    # restore
 	#defaults write com.apple.dock springboard-rows Default
 	#defaults write com.apple.dock springboard-columns Default
-	killall Dock
+	
+    killall Dock
 }
 
 function set_proxy()
