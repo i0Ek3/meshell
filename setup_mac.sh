@@ -132,6 +132,22 @@ function config_github()
 	cat ~/.ssh/id_rsb.pub
 }
 
+function vim_expand()
+{
+    tar cvf vim_$(date).tar.gz $HOME/.vim*
+    rm -rf $HOME/.vim*
+    
+    echo "which vim config you want to set?[amix or chxuan]"
+    read -r need
+    
+    if [ $need = "amix" ]
+    then
+        git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime ; sh ~/.vim_runtime/install_awesome_vimrc.sh
+    else
+        git clone https://github.com/chxuan/vimplus.git ~/.vimplus ; cd ~/.vimplus ; ./install.sh
+    fi
+}
+
 function main()
 {
 	echo "Enter your Github email: "
