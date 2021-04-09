@@ -8,24 +8,6 @@ Here are some scripts for personal use, these scripts are not fully tested, so b
 
 Use setup_mac.sh to setup your mac, you just need to run command: `sh setup_mac.sh` or `./setup_mac.sh`.
 
-## Content
+## Credit
 
-```Shell
-.
-├── README.md
-├── config_java_env.sh
-├── config_ssh.sh
-├── fuck_github.sh
-├── fuck_ntfs.sh
-├── install_from_apk.sh
-├── install_mysql4linux.sh
-├── install_omz.sh
-├── install_ubuntutouch.sh
-├── password_generator.sh
-├── reinstall_pip.sh
-├── rm_py2.sh
-└── setup_mac.sh
-
-0 directories, 13 files
-```
 You all guys.
