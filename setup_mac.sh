@@ -117,8 +117,8 @@ function set_proxy()
 
     # github 
     # Add follows lines into your hosts.
-    # 199.232.69.194 github.global.ssl.fastly.net
-    # 140.82.114.4 github.com
+    echo '199.232.69.194 github.global.ssl.fastly.net' >> /etc/hosts
+    echo '140.82.114.4 github.com' >> /etc/hosts
 }
 
 function config_github()
