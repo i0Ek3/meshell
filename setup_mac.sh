@@ -10,16 +10,16 @@ function install_homebrew()
 
 function install_ohmyzsh()
 {
-	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh	
-	git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+	git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 }
 
 function install_pkg()
 {
 	pkg=("fish" "tmux" "neovim" "mas" "tig" "git-extras" "node" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "ripgrep" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "autojump" "ideviceinstaller" "telnet" "gawk" "ack" "ag" "automake" "cmake" "llvm" "wget" "exa" "fd" "bat" "fff" "nnn" "httpie" "mpg123" "rust" "go" "m-cli")
-	pkg_cask=("android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool") 
-	
+	pkg_cask=("android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool")
+
 	brew install --HEAD libimobiledevice
     brew install ${pkg[*]}
 	brew install --cask ${pkg_cask[*]}
@@ -27,8 +27,8 @@ function install_pkg()
     # finderGo: open your terminal under the current path
 	curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.sh | sh
 
-    echo 'scoks5 127.0.0.1 1086' >> /usr/local/etc/proxychains.conf
-    echo "If your proxy port is not 1086, please modified it manaully, config file locate at /usr/local/etc/proxychains.conf."
+    echo 'scoks5 127.0.0.1 7890' >> /usr/local/etc/proxychains.conf
+    echo "If your proxy port is not 7890, please modified it manaully, config file locate at /usr/local/etc/proxychains.conf."
 }
 
 function pip_install()
@@ -45,7 +45,7 @@ function pip_install()
 
 function npm_install()
 {
-	pkg=("carbon-now-cli" "gitmoji-cli" "yddict" "tldr")
+	pkg=("carbon-now-cli" "gitmoji-cli" "tldr")
     npm config set registry https://registry.npm.taobao.org
 	npm install -g ${pkg[*]}
 }
@@ -80,7 +80,7 @@ function kill_dock()
 {
 	defaults write com.apple.dock autohide-time-modifier -float 0.5 && killall Dock
 	defaults write com.apple.dock autohide-delay -int 0 && killall Dock
-	
+
     # restore
     #defaults delete com.apple.dock autohide-time-modifier && killall Dock
 	#defaults delete com.apple.Dock autohide-delay && killall Dock
@@ -94,7 +94,7 @@ function bootborad_hack()
     # restore
 	#defaults write com.apple.dock springboard-rows Default
 	#defaults write com.apple.dock springboard-columns Default
-	
+
     killall Dock
 }
 
@@ -115,7 +115,7 @@ function set_proxy()
 	go env -w GOPROXY=https://goproxy.io,direct
 	export GOPROXY=https://goproxy.cn
 
-    # github 
+    # github
     # Add follows lines into your hosts.
     echo '199.232.69.194 github.global.ssl.fastly.net' >> /etc/hosts
     echo '140.82.114.4 github.com' >> /etc/hosts
@@ -127,7 +127,7 @@ function config_github()
 	eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
 	git config --global user.email "$email"
 	git config --global user.name "$username"
-	
+
     echo "Please copy follows SSH key and then paste it into your github SSH setting pages."
 	cat ~/.ssh/id_rsb.pub
 }
@@ -136,10 +136,10 @@ function vim_expand()
 {
     tar cvf vim_$(date).tar.gz $HOME/.vim*
     rm -rf $HOME/.vim*
-    
+
     echo "which vim config you want to set?[amix or chxuan]"
     read -r need
-    
+
     if [ $need = "amix" ]
     then
         git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime ; sh ~/.vim_runtime/install_awesome_vimrc.sh
@@ -160,8 +160,8 @@ function main()
 	kill_dock
 	install_ohmyzsh
 	install_pkg
-	cancel_shortpwd		
-	set_pgsql
+	cancel_shortpwd
+	#set_pgsql
 	pip_install
 	npm_install
     set_proxy
