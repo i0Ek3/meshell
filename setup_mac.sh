@@ -179,6 +179,8 @@ function vim_expand()
 # set npm China mirror
 function set_cn_mirror()
 {
+    # install cnpm
+    npm install cnpm -g --registry=https://registry.nlark.com
     # for npm
     npm config set registry https://registry.npm.taobao.org
 }
