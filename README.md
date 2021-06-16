@@ -13,8 +13,6 @@ Use setup_mac.sh to setup your mac, you just need to run command: `sh setup_mac.
 ```Shell
 .
 ├── README.md
-├── autocommit.sh
-├── brew_clean.sh
 ├── config_java_env.sh
 ├── config_ssh.sh
 ├── fuck_github.sh
@@ -26,6 +24,7 @@ Use setup_mac.sh to setup your mac, you just need to run command: `sh setup_mac.
 ├── password_generator.sh
 ├── reinstall_pip.sh
 ├── rm_py2.sh
+├── setup_linux.sh
 └── setup_mac.sh
 ```
 

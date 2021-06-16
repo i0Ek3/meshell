@@ -1,22 +1,9 @@
 #!/bin/bash
 
-function install_homebrew()
-{
-    # install homebrew from China source
-	/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
-
-    # reboot to activate
-	source ~/.zshrc
-	brew update ; brew upgrade
-}
-
 # install oh-my-zsh and plugins
 function install_ohmyzsh()
 {
 	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-
-    # install autojump for oh-my-zsh
-    brew install autojump
 
 	git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -26,15 +13,9 @@ function install_ohmyzsh()
 function install_pkg()
 {
     # specified packages
-	pkg=("fish" "tmux" "neovim" "mas" "tig" "git-extras" "node" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "ripgrep" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "autojump" "ideviceinstaller" "telnet" "gawk" "ack" "ag" "automake" "cmake" "llvm" "wget" "exa" "fd" "bat" "fff" "nnn" "httpie" "mpg123" "rust" "go" "m-cli")
-	pkg_cask=("android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool")
+	pkg=("fish" "tmux" "neovim" "tig" "git-extras" "node" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "ripgrep" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "autojump" "telnet" "gawk" "ack" "ag" "automake" "cmake" "llvm" "wget" "exa" "fd" "bat" "fff" "nnn" "httpie" "mpg123" "rust" "go" "m-cli" "android-platform-tools" "vscodium" "mpv" "androidtool")
 
-	brew install --HEAD libimobiledevice
-    brew install ${pkg[*]}
-	brew install --cask ${pkg_cask[*]}
-
-    # finderGo: open your terminal under the current path
-	curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.sh | sh
+    sudo apt install -y ${pkg[*]}
 
     # setting proxychains4
     echo 'scoks5 127.0.0.1 7890' >> /usr/local/etc/proxychains.conf
@@ -61,59 +42,6 @@ function npm_install()
 {
 	pkg=("carbon-now-cli" "gitmoji-cli" "tldr")
 	npm install -g ${pkg[*]}
-}
-
-# install then setting postgresql
-function set_pgsql()
-{
-	brew install postgresql
-	initdb /usr/local/var/postgres
-	brew services start postgresql
-}
-
-function cancel_shortpwd()
-{
-	pwpolicy -clearaccountpolicies
-	echo "short password cancelled, run command `passwd` to change your password!"
-}
-
-# enable option of install package anywhere
-function enable_anywhere()
-{
-	sudo spctl --master-disable
-}
-
-# change the hostname and computername
-function change_name()
-{
-	name=$(echo $USER)
-	echo "ok, name $name will be set on HostName and ComputerName."
-	sudo scutil --set HostName "$name"
-	sudo scutil --set ComputerName "$name"
-}
-
-# reset dock to fluid
-function reset_dock()
-{
-	defaults write com.apple.dock autohide-time-modifier -float 0.5 && killall Dock
-	defaults write com.apple.dock autohide-delay -int 0 && killall Dock
-
-    # restore
-    #defaults delete com.apple.dock autohide-time-modifier && killall Dock
-	#defaults delete com.apple.Dock autohide-delay && killall Dock
-}
-
-# reset bootboard to compact
-function bootboard_hack()
-{
-	defaults write com.apple.dock springboard-columns -int 9
-	defaults write com.apple.dock springboard-rows -int 6
-
-    # restore
-	#defaults write com.apple.dock springboard-rows Default
-	#defaults write com.apple.dock springboard-columns Default
-
-    killall Dock
 }
 
 # set proxy
@@ -191,20 +119,12 @@ function main()
 	echo "Enter your Github username: "
 	read -r username
 
-    # system setting
-	cancel_shortpwd
-    enable_anywhere
-	bootboard_hack
-	reset_dock
-
     # installation
-    install_homebrew
 	install_ohmyzsh
 	install_pkg
 	pip_install
     set_cn_mirror
 	npm_install
-	#set_pgsql
 
     # set proxy
     #set_proxy
