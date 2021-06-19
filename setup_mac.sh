@@ -1,8 +1,17 @@
 #!/bin/bash
 
+# [WIP] use goto in bash
+function goto()
+{
+  label=$1
+  cmd=$(sed -En "/^[[:space:]]*#[[:space:]]*$label:[[:space:]]*#/{:a;n;p;ba};" "$0")
+  eval "$cmd"
+  exit
+}
+
+# install homebrew from China source
 function install_homebrew()
 {
-    # install homebrew from China source
 	/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 
     # reboot to activate
@@ -10,7 +19,7 @@ function install_homebrew()
 	brew update ; brew upgrade
 }
 
-# install oh-my-zsh and plugins
+# install oh-my-zsh and correspoding plugins
 function install_ohmyzsh()
 {
 	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
@@ -22,29 +31,53 @@ function install_ohmyzsh()
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 }
 
+# use curl to install packages
+function cur_install()
+{
+    # ytfzf: watch youtube on your terminal
+    curl -sL "https://raw.githubusercontent.com/pystardust/ytfzf/master/ytfzf" | sudo tee /usr/bin/ytfzf >/dev/null && sudo chmod 755 /usr/bin/ytfzf
+
+    # finderGo: open your terminal under the current path
+	curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.sh | sh
+}
+
 # use brew to install packages
 function install_pkg()
 {
     # specified packages
-	pkg=("fish" "tmux" "neovim" "mas" "tig" "git-extras" "node" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "ripgrep" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "autojump" "ideviceinstaller" "telnet" "gawk" "ack" "ag" "automake" "cmake" "llvm" "wget" "exa" "fd" "bat" "fff" "nnn" "httpie" "mpg123" "rust" "go" "m-cli")
+	pkg=("fish" "tmux" "neovim" "mas" "tig" "git-extras" "node" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "rust" "go" "m-cli" "youtube-dl" "ffmpeg" "mpv")
 	pkg_cask=("android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool")
+    pkg_enhenced_cli=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "mcfly" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend")
 
-	brew install --HEAD libimobiledevice
+    taps=("clementtsang/bottom" "clementtsang/bottom")
+    brew tap ${taps[*]}
+    brew install --HEAD libimobiledevice
     brew install ${pkg[*]}
 	brew install --cask ${pkg_cask[*]}
+}
 
-    # finderGo: open your terminal under the current path
-	curl -fsSL https://raw.githubusercontent.com/onmyway133/FinderGo/master/install.sh | sh
-
-    # setting proxychains4
+# setting proxychains4
+function set_pc4()
+{
     echo 'scoks5 127.0.0.1 7890' >> /usr/local/etc/proxychains.conf
     echo "If your proxy port is not 7890, please modified it manaully, config file locate at /usr/local/etc/proxychains.conf."
+}
+
+# use go to install package
+function go_install()
+{
+    links=(
+        "github.com/cheat/cheat/cmd/cheat"\
+        "github.com/agiledragon/gomonkey"\
+        "github.com/timakin/bodyclose"\
+    )
+    go get -u ${links[*]}
 }
 
 # use pip to install packages
 function pip_install()
 {
-	pkg=("Pillow" "virtualenv" "NetEase-Music" "jupyterlab" "notebook")
+	pkg=("Pillow" "virtualenv" "NetEase-Music" "jupyterlab" "notebook" "termpair" "libretranslate")
 
     # install pip3 first if pip3 not exist
     if [ -e /usr/bin/pip3 ]
@@ -59,7 +92,7 @@ function pip_install()
 # install npm packages
 function npm_install()
 {
-	pkg=("carbon-now-cli" "gitmoji-cli" "tldr")
+	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop")
 	npm install -g ${pkg[*]}
 }
 
@@ -95,31 +128,46 @@ function change_name()
 # reset dock to fluid
 function reset_dock()
 {
-	defaults write com.apple.dock autohide-time-modifier -float 0.5 && killall Dock
-	defaults write com.apple.dock autohide-delay -int 0 && killall Dock
-
-    # restore
-    #defaults delete com.apple.dock autohide-time-modifier && killall Dock
-	#defaults delete com.apple.Dock autohide-delay && killall Dock
+    echo -n "Would you like [set] or [restore] your dock?"
+    read -r operation
+    if [ $operation == "set" ]
+    then
+	    defaults write com.apple.dock autohide-time-modifier -float 0.5 && killall Dock
+	    defaults write com.apple.dock autohide-delay -int 0 && killall Dock
+    elif [ $operation == "restore" ]
+    then
+        defaults delete com.apple.dock autohide-time-modifier && killall Dock
+	    defaults delete com.apple.Dock autohide-delay && killall Dock
+    else
+        echo "Wrong input, please re-input!"
+        #goto
+    fi
 }
 
 # reset bootboard to compact
 function bootboard_hack()
 {
-	defaults write com.apple.dock springboard-columns -int 9
-	defaults write com.apple.dock springboard-rows -int 6
-
-    # restore
-	#defaults write com.apple.dock springboard-rows Default
-	#defaults write com.apple.dock springboard-columns Default
-
-    killall Dock
+    echo -n "Would you like [set] or [restore] your board?"
+    read -r operation
+    if [ $operation == "set" ]
+    then
+	    defaults write com.apple.dock springboard-columns -int 9
+	    defaults write com.apple.dock springboard-rows -int 6
+        killall Dock
+    elif [ $operation == "restore" ]
+    then
+	    defaults write com.apple.dock springboard-rows Default
+	    defaults write com.apple.dock springboard-columns Default
+        killall Dock
+    else
+        echo "Wrong input, please re-input!"
+        #goto
+    fi
 }
 
-# set proxy
+# set socks5/http/https proxy
 function set_proxy()
 {
-    # socks5/http/https proxy
     echo -n "What's your proxy port?"
     read -r port
     if [ -s $port ]
@@ -201,12 +249,14 @@ function main()
     install_homebrew
 	install_ohmyzsh
 	install_pkg
+    set_pc4
+    curl_install
+    #go_install
 	pip_install
     set_cn_mirror
 	npm_install
 	#set_pgsql
 
-    # set proxy
     #set_proxy
     go_proxy
 
