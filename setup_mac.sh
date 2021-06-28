@@ -48,16 +48,25 @@ function cur_install()
 
     # sdkman: just like nvm or pyenv to manage java version
     curl -s "https://get.sdkman.io" | bash
+
+    # oh-my-wechat
+    curl -o- -L https://omw.limingkai.cn/install.sh | bash -s
+
+    # translate shell
+    wget git.io/trans ; chmod +x ./trans ; mc trans /usr/local/bin
+
+    # up: deploy server on AWS in seconds
+    curl -sf https://up.apex.sh/install | sh
 }
 
 # use brew to install packages
 function install_pkg()
 {
     # specified packages
-	pkg=("fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine")
+	pkg=("fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy")
 	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
-    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "mcfly" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend")
+    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "mcfly" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue")
     alternatives=("visual-studio-code")
     taps=("hashicorp/tap")
 
@@ -81,6 +90,8 @@ function go_install()
 {
     links=(
         "github.com/cheat/cheat/cmd/cheat"\
+        "github.com/uber/go-torch"\
+        "github.com/tidwall/gjson"\
         "github.com/agiledragon/gomonkey"\
         "github.com/timakin/bodyclose"\
         "golang.org/x/tools/cmd/godoc"\
@@ -107,7 +118,7 @@ function pip_install()
 # install npm packages
 function npm_install()
 {
-	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop")
+	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js")
 	npm install -g ${pkg[*]}
 }
 
