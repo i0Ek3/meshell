@@ -53,20 +53,23 @@ function cur_install()
     curl -o- -L https://omw.limingkai.cn/install.sh | bash -s
 
     # translate shell
-    wget git.io/trans ; chmod +x ./trans ; mc trans /usr/local/bin
+    wget git.io/trans ; chmod +x ./trans ; mv trans /usr/local/bin
 
     # up: deploy server on AWS in seconds
     curl -sf https://up.apex.sh/install | sh
+
+    # rclone
+    curl https://rclone.org/install.sh | sh
 }
 
 # use brew to install packages
 function install_pkg()
 {
     # specified packages
-	pkg=("fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy")
-	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager")
+	pkg=("fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "protobuf" "hugo" "dozer")
+	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
-    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "mcfly" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue")
+    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "mcfly" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron")
     alternatives=("visual-studio-code")
     taps=("hashicorp/tap")
 
@@ -103,7 +106,7 @@ function go_install()
 # use pip to install packages
 function pip_install()
 {
-	pkg=("Pillow" "virtualenv" "NetEase-Music" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python")
+	pkg=("Pillow" "virtualenv" "NetEase-Music" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python" "cppman" "jina" "imgcat")
 
     # install pip3 first if pip3 not exist
     if [ -e /usr/bin/pip3 ]
@@ -118,7 +121,7 @@ function pip_install()
 # install npm packages
 function npm_install()
 {
-	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js")
+	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum")
 	npm install -g ${pkg[*]}
 }
 
