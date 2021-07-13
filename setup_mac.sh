@@ -66,10 +66,10 @@ function cur_install()
 function install_pkg()
 {
     # specified packages
-	pkg=("fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "protobuf" "hugo" "dozer")
-	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew")
+	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "protobuf" "hugo" "dozer")
+	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew" "monitorcontrol")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
-    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "mcfly" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron")
+    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "mcfly" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
     alternatives=("visual-studio-code")
     taps=("hashicorp/tap")
 
@@ -106,7 +106,7 @@ function go_install()
 # use pip to install packages
 function pip_install()
 {
-	pkg=("Pillow" "virtualenv" "NetEase-Music" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python" "cppman" "jina" "imgcat")
+	pkg=("Pillow" "virtualenv" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python" "cppman" "jina" "imgcat")
 
     # install pip3 first if pip3 not exist
     if [ -e /usr/bin/pip3 ]
@@ -211,8 +211,7 @@ function set_proxy()
 function go_proxy()
 {
     go env -w GO111MODULE=on
-	go env -w GOPROXY=https://goproxy.io,direct
-	export GOPROXY=https://goproxy.cn
+    go env -w GOPROXY=https://goproxy.cn,direct
 }
 
 # add hosts for github
@@ -261,39 +260,51 @@ function set_cn_mirror()
     npm config set registry https://registry.npm.taobao.org
 }
 
-function main()
+function fetch_info()
 {
 	echo "Enter your Github email: "
 	read -r email
 	echo "Enter your Github username: "
 	read -r username
+}
 
+function basic_setup()
+{
     # system setting
 	cancel_shortpwd
     enable_anywhere
 	bootboard_hack
 	reset_dock
 
-    # installation
+    #set_proxy
     xcode_config
+    go_proxy
+    add_hosts
+    config_github
+    vim_expand
+}
+
+function basic_install()
+{
+    # installation
     install_homebrew
 	install_ohmyzsh
 	install_pkg
     set_pc4
     curl_install
-    #go_install
+    go_install
 	pip_install
     set_cn_mirror
 	npm_install
-	#set_pgsql
+	set_pgsql
+}
 
-    #set_proxy
-    go_proxy
 
-    add_hosts
-    config_github
-
-    vim_expand
+function main()
+{
+    fetch_info
+    basic_setup
+    basic_install
 }
 
 main
