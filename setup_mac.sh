@@ -3,10 +3,10 @@
 # [WIP] use goto in bash
 function goto()
 {
-  label=$1
-  cmd=$(sed -En "/^[[:space:]]*#[[:space:]]*$label:[[:space:]]*#/{:a;n;p;ba};" "$0")
-  eval "$cmd"
-  exit
+    label=$1
+    cmd=$(sed -En "/^[[:space:]]*#[[:space:]]*$label:[[:space:]]*#/{:a;n;p;ba};" "$0")
+    eval "$cmd"
+    exit
 }
 
 # xcode precontext
@@ -40,6 +40,9 @@ function install_ohmyzsh()
 # use curl to install packages
 function cur_install()
 {
+    # code-server: run vs code anywhere
+    curl -fsSL https://code-server.dev/install.sh | sh
+
     # ytfzf: watch youtube on your terminal
     curl -sL "https://raw.githubusercontent.com/pystardust/ytfzf/master/ytfzf" | sudo tee /usr/bin/ytfzf >/dev/null && sudo chmod 755 /usr/bin/ytfzf
 
@@ -66,10 +69,10 @@ function cur_install()
 function install_pkg()
 {
     # specified packages
-	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "protobuf" "hugo" "dozer")
+	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "protobuf" "hugo" "dozer" "create-dmg")
 	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew" "monitorcontrol")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
-    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "mcfly" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
+    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
     alternatives=("visual-studio-code")
     taps=("hashicorp/tap")
 
@@ -121,7 +124,7 @@ function pip_install()
 # install npm packages
 function npm_install()
 {
-	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum")
+	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum" "jquery" "webpack" "webpack-cli" "json-server" "eslint" "eslint-plugin-import" "eslint-config-airbnb-base" "mocha" "chai")
 	npm install -g ${pkg[*]}
 }
 
