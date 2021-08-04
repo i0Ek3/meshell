@@ -70,13 +70,20 @@ function cur_install()
 
     # nami: a binary manage package
     source <(curl -L https://git.io/getnami)
+
+    # rustup
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+    # reviewdog
+    curl -sfL https://raw.githubusercontent.com/reviewdog/nightly/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 }
 
 # use brew to install packages
 function install_pkg()
 {
     # specified packages
-	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "cloc" "protobuf" "hugo" "dozer" "create-dmg" "zsh-vi-mode" "slides" "pywin32" "kubectx" "graphviz" "t-rec" "gitui" "infracost")
+	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "cloc" "protobuf" "hugo" "dozer" "create-dmg"
+        "zsh-vi-mode" "slides" "pywin32" "kubectx" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul")
 	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew" "monitorcontrol")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
     enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
