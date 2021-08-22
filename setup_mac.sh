@@ -83,10 +83,10 @@ function install_pkg()
 {
     # specified packages
 	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "cloc" "protobuf" "hugo" "dozer" "create-dmg"
-        "zsh-vi-mode" "slides" "pywin32" "kubectx" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul")
+"zig" "zsh-vi-mode" "slides" "pywin32" "kubectx" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul" "pdfcpu" "flamegraph" "certbot")
 	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew" "monitorcontrol")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
-    enhenced=("exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
+    enhenced=("q" "exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
     alternatives=("visual-studio-code")
     taps=("hashicorp/tap")
 
@@ -96,6 +96,13 @@ function install_pkg()
     brew install ${lg[*]}
     brew install ${enhenced[*]}
 	brew install --cask ${pkg_cask[*]}
+}
+
+# install rust package by cargo
+function cargo_install()
+{
+    pkg=("mdbook")
+    cargo install ${pkg[*]}
 }
 
 # setting proxychains4
@@ -111,6 +118,7 @@ function go_install()
     links=(
         "github.com/cheat/cheat/cmd/cheat"\
         "github.com/uber/go-torch"\
+        "github.com/tsliwowicz/go-wrk"\
         "github.com/tidwall/gjson"\
         "github.com/agiledragon/gomonkey"\
         "github.com/timakin/bodyclose"\
@@ -139,8 +147,15 @@ function pip_install()
 # install npm packages
 function npm_install()
 {
-	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum" "jquery" "webpack" "webpack-cli" "json-server" "eslint" "eslint-plugin-import" "eslint-config-airbnb-base" "mocha" "chai" "markdown-it" "docsify-cli")
+	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum" "jquery" "webpack" "webpack-cli" "json-server" "eslint" "eslint-plugin-import" "eslint-config-airbnb-base" "mocha" "chai" "markdown-it" "docsify-cli" "bower" "gulp-cli" "monaco-editor" "puppeteer")
 	npm install -g ${pkg[*]}
+}
+
+# install package for ML/DL
+function ml-dl_install()
+{
+    pkg=("torch" "torchvision")
+    pip3 install ${pkg[*]}
 }
 
 # install then setting postgresql
@@ -314,8 +329,10 @@ function basic_install()
     install_homebrew
 	install_ohmyzsh
 	install_pkg
+    ml-ml-dl_install
     set_pc4
     curl_install
+    cargo_install
     go_install
 	pip_install
     set_cn_mirror
