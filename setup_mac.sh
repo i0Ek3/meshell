@@ -86,7 +86,7 @@ function install_pkg()
 {
     # specified packages
 	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "cloc" "protobuf" "hugo" "dozer" "create-dmg"
-"zig" "zsh-vi-mode" "slides" "pywin32" "kubectx" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul" "pdfcpu" "flamegraph" "certbot" "pass" "filebrowser" "picgo" "upic" "sachaos/tap/viddy")
+"zig" "zsh-vi-mode" "slides" "pywin32" "minikube" "kubectl" "kubectx" "kind" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul" "pdfcpu" "flamegraph" "certbot" "pass" "filebrowser" "picgo" "upic" "sachaos/tap/viddy")
 	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew" "monitorcontrol" "font-jetbrains-mono")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
     enhenced=("q" "exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
@@ -142,7 +142,7 @@ function go_install()
 # use pip to install packages
 function pip_install()
 {
-	pkg=("Pillow" "virtualenv" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python" "cppman" "jina" "imgcat")
+	pkg=("Pillow" "virtualenv" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python" "cppman" "jina" "imgcat" "flit")
 
     # install pip3 first if pip3 not exist
     if [ -e /usr/bin/pip3 ]
@@ -157,7 +157,7 @@ function pip_install()
 # install npm packages
 function npm_install()
 {
-	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum" "jquery" "webpack" "webpack-cli" "json-server" "eslint" "eslint-plugin-import" "eslint-config-airbnb-base" "mocha" "chai" "markdown-it" "docsify-cli" "bower" "gulp-cli" "monaco-editor" "puppeteer" "picgo")
+	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum" "jquery" "webpack" "webpack-cli" "json-server" "eslint" "eslint-plugin-import" "eslint-config-airbnb-base" "mocha" "chai" "markdown-it" "docsify-cli" "bower" "gulp-cli" "monaco-editor" "puppeteer" "picgo" "hacker-feeds-cli")
 	npm install -g ${pkg[*]}
 }
 
