@@ -42,7 +42,7 @@ function install_ohmyzsh()
 }
 
 # use curl to install packages
-function cur_install()
+function curl_install()
 {
     # code-server: run vs code anywhere
     curl -fsSL https://code-server.dev/install.sh | sh
@@ -79,6 +79,19 @@ function cur_install()
 
     # install forgit
     source <(curl -sSL git.io/forgit)
+
+    # rclone
+    curl https://rclone.org/install.sh | sudo bash
+
+    # k3s
+    curl -sfL https://get.k3s.io | sh -
+
+    # k8s
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
+
+    # minikube
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+    sudo install minikube-darwin-amd64 /usr/local/bin/minikube
 }
 
 # use brew to install packages
@@ -86,7 +99,7 @@ function install_pkg()
 {
     # specified packages
 	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "cloc" "protobuf" "hugo" "dozer" "create-dmg"
-"zig" "zsh-vi-mode" "slides" "pywin32" "minikube" "kubectl" "kubectx" "kind" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul" "pdfcpu" "flamegraph" "certbot" "pass" "filebrowser" "picgo" "upic" "sachaos/tap/viddy")
+"zig" "zsh-vi-mode" "slides" "pywin32" "minikube" "kubectl" "kubectx" "kind" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul" "pdfcpu" "flamegraph" "certbot" "pass" "filebrowser" "picgo" "upic" "sachaos/tap/viddy" "k6" "onefetch" "leiningen" "pdm" "ddosify/tap/ddosify" "knqyf263/pet/pet" "ocrmypdf" "pipx")
 	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew" "monitorcontrol" "font-jetbrains-mono")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
     enhenced=("q" "exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
@@ -142,7 +155,7 @@ function go_install()
 # use pip to install packages
 function pip_install()
 {
-	pkg=("Pillow" "virtualenv" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python" "cppman" "jina" "imgcat" "flit")
+	pkg=("Pillow" "virtualenv" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python" "cppman" "jina" "imgcat" "flit" "xxh-xxh")
 
     # install pip3 first if pip3 not exist
     if [ -e /usr/bin/pip3 ]
@@ -157,7 +170,7 @@ function pip_install()
 # install npm packages
 function npm_install()
 {
-	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum" "jquery" "webpack" "webpack-cli" "json-server" "eslint" "eslint-plugin-import" "eslint-config-airbnb-base" "mocha" "chai" "markdown-it" "docsify-cli" "bower" "gulp-cli" "monaco-editor" "puppeteer" "picgo" "hacker-feeds-cli")
+	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum" "jquery" "webpack" "webpack-cli" "json-server" "eslint" "eslint-plugin-import" "eslint-config-airbnb-base" "mocha" "chai" "markdown-it" "docsify-cli" "bower" "gulp-cli" "monaco-editor" "puppeteer" "picgo" "hacker-feeds-cli" "node-wifi-cli")
 	npm install -g ${pkg[*]}
 }
 
