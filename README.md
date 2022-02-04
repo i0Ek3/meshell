@@ -4,29 +4,81 @@ Here are some scripts for personal use, these scripts are not fully tested, so b
 
 > YOU OWN RISK!!!
 
-## Recommend
+## Getting Started
 
-Use setup_mac.sh to setup your mac, you just need to run command: `sh setup_mac.sh` or `./setup_mac.sh`.
+- Wrok on Linux/macOS.
 
-## Content
+### Setting Linux/macOS
 
-```Shell
-.
-├── README.md
-├── config_java_env.sh
-├── config_ssh.sh
-├── fuck_github.sh
-├── fuck_ntfs.sh
-├── install_from_apk.sh
-├── install_mysql4linux.sh
-├── install_omz.sh
-├── install_ubuntutouch.sh
-├── password_generator.sh
-├── reinstall_pip.sh
-├── rm_py2.sh
-├── setup_linux.sh
-└── setup_mac.sh
-```
+Run command `sh setup.sh`.
+
+### Only Install Configured vim/zsh/tmux
+
+Run command `sh vzt.sh`.
+
+### Only Install MySQL/PostgreSQL/Redis
+
+Run command `sh db.sh`.
+
+### Setting Fish
+
+Run command `sh fish.sh`.
+
+### Setting GitHub Proxy
+
+Run command `sh github.sh`.
+
+### Setting Go ENV
+
+Run command `sh goenv.sh`.
+
+### Setting Java ENV
+
+Run command `sh javaenv.sh`.
+
+### Install Oh-my-zsh
+
+> Official version.
+
+Run command `sh omz.sh`.
+
+### Generate Random Password
+
+Run command `sh pwdgen.sh`.
+
+### Install Configured vim/zsh/tmux
+
+Run command `sh vzt.sh`.
+
+
+
+- Only work on macOS
+
+### Setting Basic macOS
+
+Run command `sh basic.sh`.
+
+### Enable Access NTFS on macOS
+
+Run command `sh ntfs.sh`.
+
+### Python Libs on macOS
+
+Run command `sh pylib.sh`.
+
+### Enable vmnetd
+
+Run command `sh vmnetd.sh`.
+
+
+
+- Only work on Linux
+
+### Install ubuntu touch
+
+Run command `sh ut.sh`.
+
+## 
 
 ## Credit
 
