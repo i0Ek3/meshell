@@ -21,7 +21,7 @@ echo -e "\033[34m Okay, thank you for your patient! \033[0m"
 # macOS
 # sha support 1 (default), 224, 256, 384, 512, 512224, 512256
 
-function calculateHash() {
+calculateHash() {
     if [ $type == "file" ]
     then
         if [ $encrypt == "md5" ]

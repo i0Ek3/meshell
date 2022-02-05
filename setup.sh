@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # xcode precontext
-function xcode_config() {
+xcode_config() {
     sudo xcode-select --install
 }
 
 # install homebrew from China source
-function install_homebrew() {
+install_homebrew() {
 	/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 
     # reboot to activate
@@ -15,7 +15,7 @@ function install_homebrew() {
 }
 
 # use curl to install packages
-function curl_install() {
+curl_install() {
     # code-server: run vs code anywhere
     curl -fsSL https://code-server.dev/install.sh | sh
 
@@ -67,10 +67,10 @@ function curl_install() {
 }
 
 # use brew to install packages
-function install_pkg() {
+install_pkg() {
     # specified packages
 	pkg=("gdb" "fish" "tmux" "neovim" "emacs" "mas" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "hh" "iproute2mac" "screenfetch" "neofetch" "tree" "proxychains-ng" "ideviceinstaller" "telnet" "gawk" "ack" "automake" "cmake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "mpv" "vagrant" "docker" "xquartz" "bash-completion" "docker-completion" "nvm" "heroku/brew/heroku" "docker" "docker-machine" "scrcpy" "scc" "cloc" "protobuf" "hugo" "dozer" "create-dmg"
-"zig" "zsh-vi-mode" "slides" "pywin32" "minikube" "kubectl" "kubectx" "kind" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul" "pdfcpu" "flamegraph" "certbot" "pass" "filebrowser" "picgo" "upic" "sachaos/tap/viddy" "k6" "onefetch" "leiningen" "pdm" "ddosify/tap/ddosify" "knqyf263/pet/pet" "ocrmypdf" "pipx" "glide")
+"zig" "zsh-vi-mode" "slides" "pywin32" "minikube" "kubectl" "kubectx" "kind" "graphviz" "t-rec" "gitui" "infracost" "hashicorp/tap/terraform" "hashicorp/tap/consul" "pdfcpu" "flamegraph" "certbot" "pass" "filebrowser" "picgo" "upic" "sachaos/tap/viddy" "k6" "onefetch" "leiningen" "pdm" "ddosify/tap/ddosify" "knqyf263/pet/pet" "ocrmypdf" "pipx" "glide" "reattach-to-user-namespace")
 	pkg_cask=("iterm2" "android-platform-tools" "vscodium" "mpv" "osxfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "cakebrew" "monitorcontrol" "font-jetbrains-mono")
     lg=("java" "python" "go" "rust" "rustup" "scala" "sbt" "rbenv" "ruby-build" "rbenv-default-gems" "rbenv-gemset" "node" "typescript")
     enhenced=("q" "exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
@@ -86,13 +86,13 @@ function install_pkg() {
 }
 
 # install package for Linux
-function install_pkg4L() {
+install_pkg4L() {
     sudo apt install -y openssh-server openssh-client
     sudo service ssh restart
 }
 
 # set proxy
-function set_proxy() {
+set_proxy() {
     echo -n "What's your proxy port? [7890 for Clash, 1080 for Shadowsocks/V2ray]"
     read -r port
     echo 'scoks5 127.0.0.1 $port' >> /usr/local/etc/proxychains.conf
@@ -100,7 +100,7 @@ function set_proxy() {
 }
 
 # use go to install package
-function go_install() {
+go_install() {
     links=(
         "gorm.io/gorm"\
         "gorm.io/driver/sqlite"\
@@ -123,7 +123,7 @@ function go_install() {
 }
 
 # use pip to install packages
-function pip_install() {
+pip_install() {
 	pkg=("Pillow" "virtualenv" "jupyterlab" "notebook" "termpair" "libretranslate" "youtube-search-python" "cppman" "jina" "imgcat" "flit" "xxh-xxh")
 
     # install pip3 first if pip3 not exist
@@ -137,26 +137,26 @@ function pip_install() {
 }
 
 # install npm packages
-function npm_install() {
+npm_install() {
 	pkg=("carbon-now-cli" "gitmoji-cli" "tldr" "gtop" "uglify-js" "@gauseen/gum" "jquery" "webpack" "webpack-cli" "json-server" "eslint" "eslint-plugin-import" "eslint-config-airbnb-base" "mocha" "chai" "markdown-it" "docsify-cli" "bower" "gulp-cli" "monaco-editor" "puppeteer" "picgo" "hacker-feeds-cli" "node-wifi-cli")
 	npm install -g ${pkg[*]}
 }
 
 # install package for ML/DL
-function mldl_install() {
+mldl_install() {
     pkg=("tensorflow" "torch" "torchvision")
     pip3 install ${pkg[*]}
 }
 
 # set npm China mirror
-function set_cn_mirror() {
+set_cn_mirror() {
     # install cnpm
     npm install cnpm -g --registry=https://registry.nlark.com
     # for npm
     npm config set registry https://registry.npm.taobao.org
 }
 
-function common() {
+common() {
     curl_install
     go_install
 	pip_install
@@ -164,7 +164,7 @@ function common() {
 	npm_install
 }
 
-function mac() {
+mac() {
     xcode_config
     install_homebrew
 	install_pkg
@@ -174,12 +174,12 @@ function mac() {
     pc4 common
 }
 
-function linux() {
+linux() {
     common
     install_pkg4L
 }
 
-function main {
+main {
     platform=$(uname -s)
     if [ $platform == "Darwin" ]
     then

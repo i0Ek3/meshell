@@ -18,14 +18,14 @@ setpxy() {
 }
 
 # add hosts for github
-function add_hosts() {
+add_hosts() {
     # Add follows lines into your hosts.
     echo '199.232.69.194 github.global.ssl.fastly.net' >> /etc/hosts
     echo '140.82.114.4 github.com' >> /etc/hosts
 }
 
 # config github profile
-function config_github() {
+config_github() {
 	echo "Enter your Github email: "
 	read -r email
 	echo "Enter your Github username: "
