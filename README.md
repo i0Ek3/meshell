@@ -74,11 +74,13 @@ Run command `sh vmnetd.sh`.
 
 - Only work on Linux
 
-### Install ubuntu touch
+### Install Ubuntu Touch
 
 Run command `sh ut.sh`.
 
-## 
+## Check Basic Configuration for Hackintosh
+
+Run command `sh check.sh`.
 
 ## Credit
 
