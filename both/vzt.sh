@@ -9,7 +9,7 @@ vim() {
 
 zsh() {
     echo "Configurating tmux..."
-    sh install_omz.sh
+    sh omz.sh
     git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     echo "zsh config done!"

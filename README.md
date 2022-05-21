@@ -6,7 +6,7 @@ Here are some scripts for personal use, these scripts are not fully tested, so b
 
 ## Getting Started
 
-- Wrok on Linux/macOS.
+- Wrok on Linux/macOS, check both/.
 
 ### Setting Linux/macOS
 
@@ -46,13 +46,9 @@ Run command `sh omz.sh`.
 
 Run command `sh pwdgen.sh`.
 
-### Install Configured vim/zsh/tmux
-
-Run command `sh vzt.sh`.
 
 
-
-- Only work on macOS
+- Only work on macOS, check mac/.
 
 ### Setting Basic macOS
 
@@ -72,7 +68,7 @@ Run command `sh vmnetd.sh`.
 
 
 
-- Only work on Linux
+- Only work on Linux, check linux/.
 
 ### Install Ubuntu Touch
 

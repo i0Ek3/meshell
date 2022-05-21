@@ -37,12 +37,12 @@ config_github() {
 	git config --global user.name "$username"
 
     echo "Please copy follows SSH key and then paste it into your github SSH setting pages."
-	cat ~/.ssh/id_rsb.pub
+	cat ~/.ssh/id_rsa.pub
 }
 
 main() {
     #setpxy
-    add_hosts
+    #add_hosts
     config_github
 }
 
