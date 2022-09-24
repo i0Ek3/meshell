@@ -3,7 +3,7 @@
 config_fish() {
     platform=$(uname -s)
 
-    if [ $platform == 'Darwin' ]
+    if [ $platform == "Darwin" ]
     then
         brew install fish
         echo “/usr/local/bin/fish” | sudo tee -a /etc/shells

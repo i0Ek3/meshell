@@ -31,7 +31,7 @@ export_path() {
 
 install_go_by_source() {
     # TODO: fetch version by script instead of hardcode
-    version=1.19
+    version=1.19.1
     wget https://go.dev/dl/go${version}.linux-amd64.tar.gz
     rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go${version}.linux-amd64.tar.gz
     export PATH=$PATH:/usr/local/go/bin

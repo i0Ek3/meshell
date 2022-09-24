@@ -1,5 +1,11 @@
 #!/bin/bash
 
+usage() {
+    cat << EOF
+    Usage: ./mac-dev.sh
+EOF
+}
+
 base_setup() {
     name=`echo $USER`
     sudo spctl --master-disable
@@ -15,10 +21,23 @@ base_setup() {
 }
 
 install_brew() {
-    /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+    arch=`uname -p`
+    if [[ "$arch" == "i386" ]]
+    then
+        /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+    elif [[ "$arch" == "arm" ]]
+    then
+        /bin/bash -c "$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)"
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+        echo "More details please check this link: https://brew.idayer.com/guide/m1/"
+    fi
 }
 
 fix_brew() {
+    export PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin
+    brew doctor
+
     git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core
     git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask
     git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-services
@@ -40,7 +59,7 @@ install_pkg() {
 
 set_goenv() {
     echo "Please install Go package first!"
-    sleep 10
+    sleep 3
     go env -w GO111MODULE=on
     go env -w GOPROXY=https://goproxy.cn,direct
 }
@@ -79,11 +98,14 @@ set_github() {
 }
 
 main() {
+    usage
+
     echo "Before installation, please make sure you already set Clash done."
-    sleep 10
+    sleep 3
 
     base_setup
     install_brew
+    #fix_brew
     install_pkg
     set_goenv
     set_zsh

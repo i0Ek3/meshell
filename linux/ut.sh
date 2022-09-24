@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "Deprecated!"
+sleep 10
 
 echo "-------------------------------Only Linux----------------------------------"
 echo " "
