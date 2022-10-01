@@ -11,7 +11,6 @@ base_setup() {
     sudo spctl --master-disable
     sudo scutil --set HostName "$name"
     sudo scutil --set ComputerName "$name"
-    xcode-select --install
 
     defaults write com.apple.dock autohide-time-modifier -float 0.5
     defaults write com.apple.dock autohide-delay -int 0
@@ -41,16 +40,19 @@ fix_brew() {
     git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core
     git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask
     git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-services
+
+    git -C "/usr/local/Homebrew" remote set-url origin https://github.com/Homebrew/brew
+    rm -rf "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask" ; brew tap homebrew/cask
+    rm -rf "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core"; brew tap homebrew/core
+    rm -rf "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-services" ; brew tap homebrew/services
 }
 
 install_pkg() {
-	pkg=("tmux" "proxychains-ng" "neovim" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "iproute2mac" "screenfetch" "neofetch" "tree" "telnet" "gawk" "ack" "automake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "xquartz" "bash-completion" "docker-completion" "nvm" "scc" "cloc" "protobuf" "minikube" "kubectl" "graphviz" "qlmarkdown" "syntax-highlight")
+	pkg=("tmux" "tree" "neovim" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "iproute2mac" "screenfetch" "neofetch" "tree" "telnet" "gawk" "ack" "automake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "xquartz" "bash-completion" "docker-completion" "nvm" "scc" "cloc" "protobuf" "minikube" "kubectl" "graphviz" "qlmarkdown" "syntax-highlight")
 	pkg_cask=("android-platform-tools" "cmake" "mpv" "macfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "monitorcontrol" "font-jetbrains-mono")
     lg=("rust" "rustup""node" "typescript")
     enhenced=("q" "exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")
-    taps=("hashicorp/tap" "filebrowser/tap" "homebrew/cask-fonts")
 
-    brew tap ${taps[*]}
     brew install ${pkg[*]}
     brew install ${lg[*]}
     brew install ${enhenced[*]}
@@ -65,7 +67,6 @@ set_goenv() {
 }
 
 set_zsh() {
-    #sh omz.sh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -102,10 +103,12 @@ main() {
 
     echo "Before installation, please make sure you already set Clash done."
     sleep 3
+    xcode-select --install
 
     base_setup
     install_brew
-    #fix_brew
+    fix_brew
+    brew install proxychains-ng
     install_pkg
     set_goenv
     set_zsh
