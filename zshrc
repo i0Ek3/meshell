@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -72,7 +74,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -101,8 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 plugins=(zsh-autosuggestions zsh-syntax-highlighting autojump)
-
-alias pxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 
 # alias
 alias c='clear'
@@ -194,16 +194,7 @@ alias pgc='proxychains4 git clone'
 alias setpxy="export ALL_PROXY=socks5://127.0.0.1:7891"
 alias unpxy="unset ALL_PROXY"
 
-## system
-alias reopen='sudo xattr -d com.apple.quarantine'
-# cannot rm file: read-only system
-alias remnt='sudo mount -uw /'
 
-
-## ffmpeg
-alias ff='ffmpeg'
-alias ffcut='ffmpeg -i $src_video_name -ss $where_to_start -t $how_long -acodec copy -vcodec copy $output_name' #example: ffmpeg -ss 00:03:25 -t 00:19:07 -i japan-2.mp4 -vcodec copy -acodec copy j-2.mp4 
-alias ffcvt='ffmpeg -i $src_video_name $output_name' #example: ffmpeg -i japan.wmv japan-2.mp4 
 
 ## brew
 alias bu='brew update ; brew upgrade'
@@ -297,10 +288,18 @@ alias mystop='mysql.server stop'
 
 ## autojump
 alias j='autojump'
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+[[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
 
 ## misc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 alias rehb='/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"'
+
+# github
+alias mine='~/GitHub/mine'
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890

@@ -48,7 +48,7 @@ fix_brew() {
 }
 
 install_pkg() {
-	pkg=("tmux" "tree" "neovim" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "iproute2mac" "screenfetch" "neofetch" "tree" "telnet" "gawk" "ack" "automake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "xquartz" "bash-completion" "docker-completion" "nvm" "scc" "cloc" "protobuf" "minikube" "kubectl" "graphviz" "qlmarkdown" "syntax-highlight")
+	pkg=("tmux" "tree" "neovim" "tig" "git-extras" "mysql" "yarn" "mycli" "pgcli" "redis" "shellcheck" "iproute2mac" "screenfetch" "neofetch" "telnet" "gawk" "ack" "automake" "llvm" "wget" "mpg123" "m-cli" "youtube-dl" "ffmpeg" "xquartz" "bash-completion" "docker-completion" "nvm" "scc" "cloc" "protobuf" "minikube" "kubectl" "graphviz" "qlmarkdown" "syntax-highlight")
 	pkg_cask=("android-platform-tools" "cmake" "mpv" "macfuse" "androidtool" "virtualbox" "vagrant" "vagrant-manager" "monitorcontrol" "font-jetbrains-mono")
     lg=("rust" "rustup""node" "typescript")
     enhenced=("q" "exa" "fd" "bat" "fff" "fzf" "nnn" "httpie" "rs/tap/curlie" "ag" "lsd" "git-delta" "dust" "duf" "broot" "ripgrep" "the_silver_searcher" "choose-rust" "jq" "sd" "tldr" "bottom" "glances" "hyperfine" "procs" "xh" "zoxide" "ffsend" "pueue" "grex" "gron" "dog")

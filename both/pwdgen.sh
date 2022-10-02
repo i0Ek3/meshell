@@ -8,12 +8,29 @@
 #   or 3:
 #       ./pwdIterator.sh md5 "abcdf" 5
 
-echo -n "Which way you want to encrypt(md5 sha1 sha256 sha512): "
+algo=("md5" "sha1" "sha256" "sha512")
+echo -n "Please choose an algorithm from ["md5"/"sha1"/"sha256"/"sha512"]: "
 read encrypt
-echo -n "Which type you want to convert(file or str): "
+
+if [ $encrypt != "md5" -a $encrypt != "sha1" -a $encrypt != "sha256" -a $encrypt != "sha512" ]
+then
+    echo -e "\033[31m Unsupported algorithm \033[0m"
+    exit
+fi
+
+echo -n "Please input [file] or [str]: "
 read type
-echo -n "Please input your full path file's name or str contents: "
+
+if [ $type != "file" -a $type != "str" ]
+then
+    echo -e "\033[31m Unsupported type \033[0m"
+    exit
+fi
+
+echo -n "Please specific a file or typing something: "
 read contents
+
+
 #echo -n "Please input times you want to iterator: "
 #read time
 echo -e "\033[34m Okay, thank you for your patient! \033[0m"
@@ -36,28 +53,24 @@ calculateHash() {
         elif [ $encrypt == "sha512" ]
         then
             echo $(shasum -a 512 $contents)
-        else
-            echo -e "\033[31m Wrong input, exitting... \033[0m"
         fi
     elif [ $type == "str" ]
     then
         if [ $encrypt == "md5" ]
         then
-            echo -n $contents | md5 | awk '{print $contents}'
+            echo -n $contents | md5
         elif [ $encrypt == "sha1" ]
         then
-            echo -n $contents | shasum -a 1 | awk '{print $contents}'
+            echo -n $contents | shasum -a 1
         elif [ $encrypt == "sha256" ]
         then
-            echo -n $contents | shasum -a 256 | awk '{print $contents}'
+            echo -n $contents | shasum -a 256
         elif [ $encrypt == "sha512" ]
         then
-            echo -n $contents | shasum -a 512 | awk '{print $contents}'
-        else
-            echo -e "\033[31m Wrong input, exitting... \033[0m"
+            echo -n $contents | shasum -a 512
         fi
     else
-        echo -e "\033[31m Wrong input, exitting... \033[0m"
+        echo -e "\033[31m Wrong input, bye... \033[0m"
     fi
 }
 
